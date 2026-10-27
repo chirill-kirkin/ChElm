@@ -31,3 +31,4 @@ plugins {
 
 rootProject.name = "mvu"
 include(":mvu-core")
+include(":mvu-savedstate")
