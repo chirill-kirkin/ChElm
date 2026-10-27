@@ -1,0 +1,19 @@
+public abstract interface class io/github/chirillkirkin/mvu/savedstate/SavedStateMVU : io/github/chirillkirkin/mvu/MVU {
+	public abstract fun isStateRestored ()Z
+}
+
+public final class io/github/chirillkirkin/mvu/savedstate/SavedStateMVUStore : io/github/chirillkirkin/mvu/savedstate/SavedStateMVU {
+	public fun getCommands ()Lkotlinx/coroutines/flow/Flow;
+	public fun getState ()Lkotlinx/coroutines/flow/StateFlow;
+	public fun isStateRestored ()Z
+	public fun launchIn (Lkotlinx/coroutines/CoroutineScope;)V
+	public fun send (Ljava/lang/Object;)V
+}
+
+public final class io/github/chirillkirkin/mvu/savedstate/SavedStateMVUStoreKt {
+	public static final fun mvuStore (Landroidx/lifecycle/SavedStateHandle;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Ljava/util/List;ILkotlin/jvm/functions/Function2;)Lio/github/chirillkirkin/mvu/savedstate/SavedStateMVUStore;
+	public static final fun mvuStore (Landroidx/lifecycle/SavedStateHandle;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlinx/serialization/KSerializer;Ljava/lang/String;Landroidx/savedstate/serialization/SavedStateConfiguration;Lkotlin/jvm/functions/Function2;Ljava/util/List;ILkotlin/jvm/functions/Function2;)Lio/github/chirillkirkin/mvu/savedstate/SavedStateMVUStore;
+	public static synthetic fun mvuStore$default (Landroidx/lifecycle/SavedStateHandle;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function1;Lkotlin/jvm/functions/Function2;Ljava/lang/String;Lkotlin/jvm/functions/Function2;Ljava/util/List;ILkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lio/github/chirillkirkin/mvu/savedstate/SavedStateMVUStore;
+	public static synthetic fun mvuStore$default (Landroidx/lifecycle/SavedStateHandle;Ljava/lang/Object;Lkotlin/jvm/functions/Function2;Lkotlin/jvm/functions/Function1;Lkotlinx/serialization/KSerializer;Ljava/lang/String;Landroidx/savedstate/serialization/SavedStateConfiguration;Lkotlin/jvm/functions/Function2;Ljava/util/List;ILkotlin/jvm/functions/Function2;ILjava/lang/Object;)Lio/github/chirillkirkin/mvu/savedstate/SavedStateMVUStore;
+}
+

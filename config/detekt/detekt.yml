@@ -1,0 +1,248 @@
+comments:
+  DeprecatedBlockTag:
+    active: true
+  KDocReferencesNonPublicProperty:
+    active: true
+    # Default test source excludes extended with the KMP Android host test source set.
+    excludes: &testSources ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/jsTest/**', '**/iosTest/**', '**/androidHostTest/**']
+  OutdatedDocumentation:
+    active: true
+
+complexity:
+  CyclomaticComplexMethod:
+    ignoreSimpleWhenEntries: true
+  LongParameterList:
+    allowedFunctionParameters: 6
+    ignoreDefaultParameters: true
+  TooManyFunctions:
+    excludes: *testSources
+    ignorePrivate: true
+    ignoreAnnotatedFunctions: ['Preview']
+
+coroutines:
+  CoroutineLaunchedInTestWithoutRunTest:
+    active: true
+  GlobalCoroutineUsage:
+    active: true
+  SuspendFunInFinallySection:
+    active: true
+  SuspendFunSwallowedCancellation:
+    active: true
+
+exceptions:
+  ErrorUsageWithThrowable:
+    active: true
+  InstanceOfCheckForException:
+    excludes: *testSources
+  NotImplementedDeclaration:
+    active: true
+  ObjectExtendsThrowable:
+    active: true
+  ThrowingExceptionsWithoutMessageOrCause:
+    excludes: *testSources
+  TooGenericExceptionCaught:
+    excludes: *testSources
+
+naming:
+  FunctionNaming:
+    excludes: *testSources
+    ignoreAnnotated: ['Composable']
+  MatchingDeclarationName:
+    active: false
+  ObjectPropertyNaming:
+    constantPattern: '[A-Z][A-Za-z0-9]*|[A-Z][_A-Z0-9]*'
+  TopLevelPropertyNaming:
+    constantPattern: '[A-Z][A-Za-z0-9]*|[A-Z][_A-Z0-9]*'
+
+performance:
+  ForEachOnRange:
+    excludes: *testSources
+  SpreadOperator:
+    excludes: *testSources
+
+potential-bugs:
+  CastNullableToNonNullableType:
+    active: true
+  CastToNullableType:
+    active: true
+  CharArrayToStringCall:
+    active: true
+  DontDowncastCollectionTypes:
+    active: true
+  ElseCaseInsteadOfExhaustiveWhen:
+    active: true
+  ExitOutsideMain:
+    active: true
+  MissingSuperCall:
+    active: true
+  MissingUseCall:
+    active: true
+    excludes: *testSources
+  NullCheckOnMutableProperty:
+    active: true
+  NullableToStringCall:
+    active: true
+  PropertyUsedBeforeDeclaration:
+    active: true
+  UnconditionalJumpStatementInLoop:
+    active: true
+  UnnecessaryNotNullCheck:
+    active: true
+  UnsafeCallOnNullableType:
+    excludes: *testSources
+
+style:
+  AlsoCouldBeApply:
+    active: true
+  CanBeNonNullable:
+    active: true
+  CollapsibleIfStatements:
+    active: true
+  DataClassShouldBeImmutable:
+    active: true
+  DoubleNegativeExpression:
+    active: true
+  DoubleNegativeLambda:
+    active: true
+  ExplicitCollectionElementAccessMethod:
+    active: true
+  ForbiddenAnnotation:
+    active: true
+  ForbiddenMethodCall:
+    active: true
+  MagicNumber:
+    excludes: ['**/test/**', '**/androidTest/**', '**/commonTest/**', '**/jvmTest/**', '**/androidUnitTest/**', '**/androidInstrumentedTest/**', '**/jsTest/**', '**/iosTest/**', '**/androidHostTest/**', '**/*.kts']
+    ignoreEnums: true
+  # Formatting rules below are covered by their ktlint counterparts.
+  MaxLineLength:
+    active: false
+  ModifierOrder:
+    active: false
+  NewLineAtEndOfFile:
+    active: false
+  WildcardImport:
+    active: false
+  MultilineLambdaItParameter:
+    active: true
+  NullableBooleanCheck:
+    active: true
+  RangeUntilInsteadOfRangeTo:
+    active: true
+  ReturnCount:
+    excludeGuardClauses: true
+  ThrowsCount:
+    excludeGuardClauses: true
+  TrimMultilineRawString:
+    active: true
+  UnderscoresInNumericLiterals:
+    active: true
+  UnnecessaryAny:
+    active: true
+  UnnecessaryBackticks:
+    active: true
+  UnnecessaryBracesAroundTrailingLambda:
+    active: true
+  UnnecessaryFullyQualifiedName:
+    active: true
+  UnnecessaryInnerClass:
+    active: true
+  UnnecessaryLet:
+    active: true
+  UnnecessaryReversed:
+    active: true
+  UnusedPrivateFunction:
+    ignoreAnnotated: ['Preview']
+  UseEmptyCounterpart:
+    active: true
+  UseIfEmptyOrIfBlank:
+    active: true
+  UseSumOfInsteadOfFlatMapSize:
+    active: true
+
+ktlint:
+  code_style: 'ktlint_official'
+  AnnotationOnSeparateLine:
+    active: false
+  ArgumentListWrapping:
+    indentSize: 2
+  BinaryExpressionWrapping:
+    indentSize: 2
+  BlankLineBeforeDeclaration:
+    active: true
+  ChainMethodContinuation:
+    active: true
+    indentSize: 2
+  ChainWrapping:
+    indentSize: 2
+  ClassSignature:
+    indentSize: 2
+  CommentWrapping:
+    indentSize: 2
+  ConditionWrapping:
+    indentSize: 2
+  ContextReceiverListWrapping:
+    indentSize: 2
+  ContextReceiverMapping:
+    indentSize: 2
+  EnumWrapping:
+    indentSize: 2
+  ExpressionOperandWrapping:
+    active: true
+    indentSize: 2
+  Filename:
+    active: false
+  FunctionExpressionBody:
+    indentSize: 2
+  FunctionLiteral:
+    indentSize: 2
+  FunctionSignature:
+    indentSize: 2
+  IfElseWrapping:
+    active: true
+    indentSize: 2
+  Indentation:
+    indentSize: 2
+  KdocWrapping:
+    indentSize: 2
+  ModifierListSpacing:
+    indentSize: 2
+  MultiLineIfElse:
+    indentSize: 2
+  MultilineLoop:
+    indentSize: 2
+  NoBlankLineInList:
+    active: true
+  NoConsecutiveComments:
+    active: true
+  NoEmptyFirstLineInClassBody:
+    active: true
+    indentSize: 2
+  NoSingleLineBlockComment:
+    active: true
+    indentSize: 2
+  PackageName:
+    active: false
+  ParameterListWrapping:
+    indentSize: 2
+  ParameterWrapping:
+    indentSize: 2
+  PropertyName:
+    active: false
+  PropertyWrapping:
+    indentSize: 2
+  SpacingAroundCurly:
+    indentSize: 2
+  StatementWrapping:
+    indentSize: 2
+  StringTemplateIndent:
+    active: true
+    indentSize: 2
+  TryCatchFinallySpacing:
+    active: true
+    indentSize: 2
+  TypeArgumentListSpacing:
+    indentSize: 2
+  TypeParameterListSpacing:
+    indentSize: 2
+  Wrapping:
+    indentSize: 2

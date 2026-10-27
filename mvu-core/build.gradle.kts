@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
+
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
 }
@@ -5,6 +7,9 @@ plugins {
 kotlin {
   explicitApi()
   jvmToolchain(17)
+
+  @OptIn(ExperimentalAbiValidation::class)
+  abiValidation()
 
   jvm()
 
