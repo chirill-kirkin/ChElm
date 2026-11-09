@@ -5,6 +5,7 @@ detekt = "2.0.0-alpha.6"
 kotlin = "2.4.20"
 kotlinxCoroutines = "1.11.0"
 kotlinxSerialization = "1.11.0"
+mavenPublish = "0.37.0"
 
 [libraries]
 androidx-lifecycle-viewmodel-savedstate = { module = "androidx.lifecycle:lifecycle-viewmodel-savedstate", version.ref = "androidxLifecycle" }
@@ -20,3 +21,4 @@ detekt = { id = "dev.detekt", version.ref = "detekt" }
 kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlin" }
 kotlin-multiplatform = { id = "org.jetbrains.kotlin.multiplatform", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }
+maven-publish = { id = "com.vanniktech.maven.publish", version.ref = "mavenPublish" }

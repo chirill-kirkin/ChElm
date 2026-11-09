@@ -2,6 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.abi.ExperimentalAbiValidation
 
 plugins {
   alias(libs.plugins.kotlin.multiplatform)
+  alias(libs.plugins.maven.publish)
 }
 
 kotlin {
