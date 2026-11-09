@@ -1,5 +1,8 @@
 # ChElm
 
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.chirill-kirkin/chelm-core)](https://central.sonatype.com/namespace/io.github.chirill-kirkin)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue)](LICENSE)
+
 > 🚧 Work in progress
 
 ChElm (Ch[irkin]Elm) is a Kotlin Multiplatform UDF-architecture based on The Elm architecture (aka MVU, Model-View-Update).
