@@ -1,14 +1,14 @@
 ---
 name: mvu
 description: |
-  Model-View-Update architecture for Kotlin using the mvu-core library API. Use when creating or reviewing an MVU feature, State, Message, Update, Command, CommandExecutor, Subscription, MVUStore integration, SavedStateHandle restoration with mvu-savedstate, or MVU tests. Trigger on MVU, Model-View-Update, Elm Architecture, MVUStore, SavedStateMVU, MVU CommandExecutor, state-driven Subscription, mvu-core, or mvu-savedstate requests.
+  Model-View-Update architecture for Kotlin using the chelm-core library API. Use when creating or reviewing an MVU feature, State, Message, Update, Command, CommandExecutor, Subscription, MVUStore integration, SavedStateHandle restoration with chelm-savedstate, or MVU tests. Trigger on MVU, Model-View-Update, Elm Architecture, MVUStore, SavedStateMVU, MVU CommandExecutor, state-driven Subscription, chelm-core, or chelm-savedstate requests.
 ---
 
 # Kotlin MVU
 
 ## Vocabulary and contracts
 
-Use the contracts from `io.github.chirillkirkin.mvu` (artifact `io.github.chirill-kirkin:mvu-core`). Do not introduce parallel abstractions named `Model`, `Action`, `Intent`, `Effect`, or `Event` when the existing types cover the requirement.
+Use the contracts from `io.github.chirillkirkin.chelm` (artifact `io.github.chirill-kirkin:chelm-core`). Do not introduce parallel abstractions named `Model`, `Action`, `Intent`, `Effect`, or `Event` when the existing types cover the requirement.
 
 | Responsibility | Type |
 |---|---|
@@ -45,9 +45,9 @@ typealias Subscription<State, Message> =
 Use either a direct function or the `update { }` DSL. Prefer the style already used by the surrounding feature. The helpers `only()`, `andCommand`, and `andCommands` create concise `UpdateResult` values.
 
 ```kotlin
-import io.github.chirillkirkin.mvu.Update
-import io.github.chirillkirkin.mvu.andCommand
-import io.github.chirillkirkin.mvu.only
+import io.github.chirillkirkin.chelm.Update
+import io.github.chirillkirkin.chelm.andCommand
+import io.github.chirillkirkin.chelm.only
 
 data class CounterState(
   val count: Int = 0,
@@ -89,7 +89,7 @@ Expected failures are domain outcomes: convert them to failure messages inside t
 Put fallible work inside the returned flow. The store isolates non-cancellation exceptions raised while collecting that flow. A synchronous exception thrown before `CommandExecutor` returns its flow is outside this boundary. Always preserve `CancellationException`.
 
 ```kotlin
-import io.github.chirillkirkin.mvu.CommandExecutor
+import io.github.chirillkirkin.chelm.CommandExecutor
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.flow
@@ -121,7 +121,7 @@ Use a command for finite work requested once. Use a `Subscription` when an exter
 A subscription receives `StateFlow<State>` and returns `Flow<Message>`. Derive its activation flag or key from state, apply `distinctUntilChanged()`, then normally switch the underlying source with `flatMapLatest`. This cancels obsolete work when state changes.
 
 ```kotlin
-import io.github.chirillkirkin.mvu.Subscription
+import io.github.chirillkirkin.chelm.Subscription
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.emptyFlow
@@ -182,9 +182,9 @@ Create one store per feature instance and call `launchIn(ownerScope)` exactly on
 
 ## Saved state
 
-Use `MVUStore` when state does not need restoration. Add `mvu-savedstate` (artifact `io.github.chirill-kirkin:mvu-savedstate`, package `io.github.chirillkirkin.mvu.savedstate`) only when state must survive process recreation. It creates a `SavedStateMVU` from a `SavedStateHandle`, typically inside a `ViewModel`, and works in common KMP code.
+Use `MVUStore` when state does not need restoration. Add `chelm-savedstate` (artifact `io.github.chirill-kirkin:chelm-savedstate`, package `io.github.chirillkirkin.chelm.savedstate`) only when state must survive process recreation. It creates a `SavedStateMVU` from a `SavedStateHandle`, typically inside a `ViewModel`, and works in common KMP code.
 
-`mvu-savedstate` provides two `SavedStateHandle.mvuStore` overloads: full `@Serializable` State and a State projection. `stateKey` is mandatory; keep it stable and unique within the owner.
+`chelm-savedstate` provides two `SavedStateHandle.mvuStore` overloads: full `@Serializable` State and a State projection. `stateKey` is mandatory; keep it stable and unique within the owner.
 
 ### Full Serializable State
 
@@ -194,8 +194,8 @@ Use the serialization overload when State is small and all fields are meaningful
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import io.github.chirillkirkin.mvu.savedstate.SavedStateMVU
-import io.github.chirillkirkin.mvu.savedstate.mvuStore
+import io.github.chirillkirkin.chelm.savedstate.SavedStateMVU
+import io.github.chirillkirkin.chelm.savedstate.mvuStore
 import kotlinx.serialization.Serializable
 
 @Serializable

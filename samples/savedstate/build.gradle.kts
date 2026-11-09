@@ -10,7 +10,7 @@ kotlin {
 
   sourceSets {
     commonMain.dependencies {
-      implementation(project(":mvu-savedstate"))
+      implementation(project(":chelm-savedstate"))
     }
   }
 }

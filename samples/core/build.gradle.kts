@@ -7,5 +7,5 @@ kotlin {
 }
 
 dependencies {
-  implementation(project(":mvu-core"))
+  implementation(project(":chelm-core"))
 }

@@ -30,7 +30,7 @@ plugins {
 }
 
 rootProject.name = "mvu"
-include(":mvu-core")
-include(":mvu-savedstate")
+include(":chelm-core")
+include(":chelm-savedstate")
 include(":samples:core")
 include(":samples:savedstate")

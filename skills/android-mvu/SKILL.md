@@ -1,7 +1,7 @@
 ---
 name: android-mvu
 description: |
-  Android presentation architecture using the mvu-core library and the optional mvu-savedstate runtime. Use when creating or reviewing an Android MVU feature, ViewModel, Compose screen, UI command handling, Subscription, SavedStateHandle restoration, or Android-facing MVU tests. Trigger on requests that combine Android, ViewModel, Compose, or process-death restoration with MVU, Model-View-Update, Elm Architecture, MVUStore, or SavedStateMVUStore. Do not use for ViewModels that do not use this MVU runtime.
+  Android presentation architecture using the chelm-core library and the optional chelm-savedstate runtime. Use when creating or reviewing an Android MVU feature, ViewModel, Compose screen, UI command handling, Subscription, SavedStateHandle restoration, or Android-facing MVU tests. Trigger on requests that combine Android, ViewModel, Compose, or process-death restoration with MVU, Model-View-Update, Elm Architecture, MVUStore, or SavedStateMVUStore. Do not use for ViewModels that do not use this MVU runtime.
 ---
 
 # Android MVU
@@ -10,7 +10,7 @@ Follow the core and Android rules below. Saved-state support is described in the
 
 ## Vocabulary and API
 
-Use `io.github.chirillkirkin.mvu` (artifact `io.github.chirill-kirkin:mvu-core`) and the optional `io.github.chirillkirkin.mvu.savedstate` adapter (artifact `io.github.chirill-kirkin:mvu-savedstate`). Do not add parallel `Model`, `Action`, `Intent`, `Effect`, or `Event` types.
+Use `io.github.chirillkirkin.chelm` (artifact `io.github.chirill-kirkin:chelm-core`) and the optional `io.github.chirillkirkin.chelm.savedstate` adapter (artifact `io.github.chirill-kirkin:chelm-savedstate`). Do not add parallel `Model`, `Action`, `Intent`, `Effect`, or `Event` types.
 
 | Responsibility | Type |
 |---|---|
@@ -55,10 +55,10 @@ Keep repositories, I/O, and platform operations inside `CommandExecutor`. It ret
 Put fallible work inside the returned flow. The runtime isolates non-cancellation exceptions raised while collecting each command flow. Synchronous exceptions thrown before the executor returns a flow are outside that boundary. Always rethrow `CancellationException`.
 
 ```kotlin
-import io.github.chirillkirkin.mvu.CommandExecutor
-import io.github.chirillkirkin.mvu.Update
-import io.github.chirillkirkin.mvu.andCommand
-import io.github.chirillkirkin.mvu.only
+import io.github.chirillkirkin.chelm.CommandExecutor
+import io.github.chirillkirkin.chelm.Update
+import io.github.chirillkirkin.chelm.andCommand
+import io.github.chirillkirkin.chelm.only
 import kotlinx.coroutines.CancellationException
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch
@@ -142,7 +142,7 @@ Use a finite command for work requested once. Use `Subscription` for an external
 Derive the activation flag or key with `map` and `distinctUntilChanged()`, then switch the underlying source with `flatMapLatest`. Return the complete flow; do not launch an unmanaged ViewModel coroutine.
 
 ```kotlin
-import io.github.chirillkirkin.mvu.Subscription
+import io.github.chirillkirkin.chelm.Subscription
 import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.emptyFlow
 import kotlinx.coroutines.flow.flatMapLatest
@@ -188,8 +188,8 @@ With Hilt, annotate the feature Store with `@ViewModelScoped` and use constructo
 ```kotlin
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import io.github.chirillkirkin.mvu.MVU
-import io.github.chirillkirkin.mvu.MVUStore
+import io.github.chirillkirkin.chelm.MVU
+import io.github.chirillkirkin.chelm.MVUStore
 import dagger.hilt.android.lifecycle.HiltViewModel
 import dagger.hilt.android.scopes.ViewModelScoped
 import javax.inject.Inject

@@ -7,8 +7,8 @@ All state changes happen in one pure function, and side effects are described as
 
 ## Artifacts
 
-- [`mvu-core`](mvu-core): the MVU runtime.
-- [`mvu-savedstate`](mvu-savedstate): stores whose state survives process death via `SavedStateHandle`.
+- [`chelm-core`](chelm-core): the MVU runtime.
+- [`chelm-savedstate`](chelm-savedstate): stores whose state survives process death via `SavedStateHandle`.
 
 ## Usage
 
